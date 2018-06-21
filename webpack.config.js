@@ -4,6 +4,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const {HotModuleReplacementPlugin} = require('webpack')
 const Dotenv = require('dotenv-webpack')
 
+const javascriptLoader = {
+  test: /\.(js|jsx)$/,
+  exclude: /node_modules/,
+  use: ['babel-loader']
+}
+
 const styleLoader = {
   test: /\.css$/,
   use: [
@@ -28,6 +34,7 @@ module.exports = {
   },
   module: {
     rules: [
+      javascriptLoader,
       styleLoader,
     ],
   },
