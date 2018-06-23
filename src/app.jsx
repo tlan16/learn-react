@@ -1,11 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import counter from './counter'
 
-const app = rootElementId => {
-  ReactDOM.render(
-    <h1>Hello, world!</h1>,
-    document.getElementById(rootElementId),
-  )
+const app = () => {
+  counter()
 }
 
 export default app
