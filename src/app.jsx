@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import store from './store'
 import Counter from './counter/index'
-import { DECREMENT, INCREMENT } from './counter/constants'
+import { DECREMENT, INCREMENT } from './counter/actions'
 import { REACT_ROOT_DIV_ID } from './index'
 
 const render = () => {
