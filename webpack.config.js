@@ -1,13 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const {HotModuleReplacementPlugin} = require('webpack')
+const { HotModuleReplacementPlugin } = require('webpack')
 const Dotenv = require('dotenv-webpack')
 
 const javascriptLoader = {
   test: /\.(js|jsx)$/,
   exclude: /node_modules/,
-  use: ['babel-loader']
+  use: ['babel-loader'],
 }
 
 const styleLoader = {
@@ -26,11 +26,11 @@ const plugins = [
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
   },
   output: {
     filename: '[name].[hash].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
