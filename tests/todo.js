@@ -1,8 +1,14 @@
 /* eslint-disable function-paren-newline */
 import deepFreeze from 'deep-freeze'
+import { createStore } from 'redux'
 
-const ADD_TODO = 'ADD_TODO '
-const TOGGLE_TODO = 'TOGGLE_TODO '
+// actions
+const ADD_TODO = 'ADD_TODO'
+const TOGGLE_TODO = 'TOGGLE_TODO'
+const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
+
+// default visibility filter
+const SHOW_ALL = 'SHOW_ALL'
 
 const todoReducer = (state = {}, action) => {
   switch (action.type) {
@@ -39,6 +45,22 @@ const todosReducer = (state = [], action) => {
       return state
   }
 }
+
+const visibilityReducer = (state = SHOW_ALL, action) => {
+  switch (action.type) {
+    case SET_VISIBILITY_FILTER:
+      return action.filter
+    default:
+      return state
+  }
+}
+
+const appReducer = (state = {}, action) => ({
+  // state.todos initially is undefined,
+  // so the todosReducer fills in the default state value of empty array
+  todos: todosReducer(state.todos, action),
+  visibilityFilter: visibilityReducer(state.visibilityFilter, action),
+})
 
 test('testAddTodo', () => {
   const stateBefore = []
@@ -103,4 +125,41 @@ test('testToggleTodo', () => {
   expect(
     todosReducer(stateBefore, action),
   ).toEqual(stateAfter)
+})
+
+test('testAppInitialState', () => {
+  const store = createStore(appReducer)
+
+  const initialState = {
+    todos: [],
+    visibilityFilter: 'SHOW_ALL',
+  }
+
+  expect(
+    store.getState(),
+  ).toEqual(initialState)
+})
+
+test('testAppAddTodo', () => {
+  const store = createStore(appReducer)
+  const action = {
+    type: ADD_TODO,
+    id: 0,
+    text: 'Learn redux',
+  }
+
+  store.dispatch(action)
+
+  const state = {
+    todos: [{
+      id: 0,
+      text: 'Learn redux',
+      completed: false,
+    }],
+    visibilityFilter: 'SHOW_ALL',
+  }
+
+  expect(
+    store.getState(),
+  ).toEqual(state)
 })
