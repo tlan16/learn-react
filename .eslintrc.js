@@ -7,6 +7,7 @@ module.exports = {
   'rules': {
     'semi': 'off',
     'import/prefer-default-export': 'off',
+    'arrow-parens': 'off',
   },
   'globals': {
   },
