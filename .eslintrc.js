@@ -11,5 +11,7 @@ module.exports = {
     'import/no-named-as-default': 'off',
   },
   'globals': {
+    'test': true,
+    'expect': true,
   },
 }
