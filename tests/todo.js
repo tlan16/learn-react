@@ -4,23 +4,36 @@ import deepFreeze from 'deep-freeze'
 const ADD_TODO = 'ADD_TODO '
 const TOGGLE_TODO = 'TOGGLE_TODO '
 
-const reducer = (state = [], action) => {
+const todoReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return {
+        id: action.id,
+        text: action.text,
+        completed: false,
+      }
+
+    case TOGGLE_TODO:
+      return {
+        ...state,
+        completed: state.id === action.id,
+      }
+
+    default:
+      return state
+  }
+}
+
+const todosReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
       return [
         ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false,
-        },
+        todoReducer(undefined, action),
       ]
 
     case TOGGLE_TODO:
-      return state.map(todo => ({
-        ...todo,
-        completed: todo.id === action.id,
-      }))
+      return state.map(todo => todoReducer(todo, action))
 
     default:
       return state
@@ -48,7 +61,7 @@ test('testAddTodo', () => {
   deepFreeze(action)
 
   expect(
-    reducer(stateBefore, action),
+    todosReducer(stateBefore, action),
   ).toEqual(stateAfter)
 })
 
@@ -88,6 +101,6 @@ test('testToggleTodo', () => {
   deepFreeze(action)
 
   expect(
-    reducer(stateBefore, action),
+    todosReducer(stateBefore, action),
   ).toEqual(stateAfter)
 })
