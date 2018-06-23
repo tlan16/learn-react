@@ -24,6 +24,13 @@ const plugins = [
   new HotModuleReplacementPlugin(),
 ]
 
+const devServer = {
+  bonjour: true,
+  compress: true,
+  hot: true,
+  https: true,
+}
+
 module.exports = {
   entry: {
     app: './src/index.js',
@@ -43,4 +50,5 @@ module.exports = {
   },
   plugins,
   devtool: 'eval-source-map',
+  devServer,
 }
