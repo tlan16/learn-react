@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { REACT_ROOT_DIV_ID } from './index'
 
-const app = rootElementId => {
+const app = () => {
   ReactDOM.render(
     <h1>Hello, world!</h1>,
-    document.getElementById(rootElementId),
+    document.getElementById(REACT_ROOT_DIV_ID),
   )
 }
 
