@@ -10,4 +10,4 @@ function reactRoot() {
 
 document.body.appendChild(reactRoot())
 
-App(REACT_ROOT_DIV_ID)
+App()
