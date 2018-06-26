@@ -14,7 +14,7 @@ const todoReducer = (state = initialState, action) => {
     case TOGGLE_TODO:
       return {
         ...state,
-        completed: state.id === action.id,
+        completed: state.id === action.id ? !state.completed : state.completed,
       }
 
     default:
