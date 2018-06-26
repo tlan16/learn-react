@@ -1,24 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import store from './store'
-import Counter from './counter/index'
-import { DECREMENT, INCREMENT } from './counter/actions'
+import store from './todo/store'
 import { REACT_ROOT_DIV_ID } from './index'
+import TodoApp from './todo/index'
 
 const render = () => {
   ReactDOM.render(
-    <Counter
-      value={store.getState()}
-      onIncrement={() => {
-                store.dispatch({
-                    type: INCREMENT,
-                })
-            }}
-      onDecrement={() => {
-                store.dispatch({
-                    type: DECREMENT,
-                })
-            }}
+    <TodoApp
+      todos={store.getState().todos}
     />,
     document.getElementById(REACT_ROOT_DIV_ID),
   )
