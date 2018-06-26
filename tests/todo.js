@@ -1,6 +1,6 @@
 /* eslint-disable function-paren-newline */
 import deepFreeze from 'deep-freeze'
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
 
 // actions
 const ADD_TODO = 'ADD_TODO'
@@ -55,11 +55,9 @@ const visibilityReducer = (state = SHOW_ALL, action) => {
   }
 }
 
-const appReducer = (state = {}, action) => ({
-  // state.todos initially is undefined,
-  // so the todosReducer fills in the default state value of empty array
-  todos: todosReducer(state.todos, action),
-  visibilityFilter: visibilityReducer(state.visibilityFilter, action),
+const appReducer = combineReducers({
+  todos: todosReducer,
+  visibilityFilter: visibilityReducer,
 })
 
 test('testAddTodo', () => {
