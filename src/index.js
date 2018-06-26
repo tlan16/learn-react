@@ -1,13 +1,8 @@
 import App from './app'
 
-export const REACT_ROOT_DIV_ID = 'react-root'
+const reactRoot = document.createElement('div')
+reactRoot.id = 'react-root'
 
-function reactRoot() {
-  const element = document.createElement('div')
-  element.id = REACT_ROOT_DIV_ID
-  return element
-}
+document.body.appendChild(reactRoot)
 
-document.body.appendChild(reactRoot())
-
-App()
+App(reactRoot)
