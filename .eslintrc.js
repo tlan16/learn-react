@@ -13,6 +13,7 @@ module.exports = {
     'comma-dangle': 'warn',
     'function-paren-newline': 'off',
     'react/prefer-stateless-function': 'off',
+    'react/jsx-wrap-multilines': 'off',
   },
   'globals': {
     'test': true,
