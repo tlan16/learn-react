@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import store from './store'
 import TodoApp from './todo/index'
 import { REACT_ROOT_ELEMENT_ID } from './index'
-import { ADD_TODO } from './todo/actions'
+import { ADD_TODO, TOGGLE_TODO } from './todo/actions'
 
 const render = () => {
   ReactDOM.render(
@@ -13,6 +13,12 @@ const render = () => {
           store.dispatch({
               ...payload,
               type: ADD_TODO,
+          })
+      }
+      toggleTodo={payload =>
+          store.dispatch({
+              ...payload,
+              type: TOGGLE_TODO,
           })
       }
     />,

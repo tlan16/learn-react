@@ -6,6 +6,7 @@ class TodoApp extends Component {
   static propTypes = {
     todos: PropTypes.arrayOf(PropTypes.object),
     addTodo: PropTypes.func.isRequired,
+    toggleTodo: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -16,6 +17,7 @@ class TodoApp extends Component {
     const {
       todos,
       addTodo,
+      toggleTodo,
     } = this.props
 
     return (
@@ -26,7 +28,8 @@ class TodoApp extends Component {
             this.input = node
           }}
         />
-        <button onClick={() => {
+        <button
+          onClick={() => {
           addTodo({
             id: uuid(),
             text: this.input.value,
@@ -38,10 +41,22 @@ class TodoApp extends Component {
         </button>
 
         <ul>
-          {todos.map(todo =>
-            // eslint-disable-next-line comma-dangle
-            <li key={todo.id}>{todo.text}</li>
-          )}
+          {todos.map(todo => (
+            <li
+              key={todo.id}
+              style={{
+                  textDecoration: todo.completed ? 'line-through' : 'none',
+              }}
+            >{todo.text}
+              <button onClick={() => {
+                toggleTodo({
+                    id: todo.id,
+                })
+            }}
+              >Toggle
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
     )
