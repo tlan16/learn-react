@@ -12,7 +12,6 @@ module.exports = {
     'import/no-named-as-default': 'off',
     'comma-dangle': 'warn',
     'function-paren-newline': 'off',
-    'react/prefer-stateless-function': 'off',
     'react/jsx-wrap-multilines': 'off',
   },
   'globals': {
