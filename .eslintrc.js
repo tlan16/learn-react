@@ -9,6 +9,9 @@ module.exports = {
     'arrow-parens': 'off',
     'import/prefer-default-export': 'off',
     'import/no-named-as-default': 'off',
+    'comma-dangle': 'warn',
+    'function-paren-newline': 'off',
+    'react/prefer-stateless-function': 'off',
   },
   'globals': {
     'test': true,
