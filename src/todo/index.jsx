@@ -1,7 +1,17 @@
 import uuid from 'uuid/v4'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class TodoApp extends Component {
+  static propTypes = {
+    todos: PropTypes.arrayOf(PropTypes.object),
+    addTodo: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    todos: [],
+  }
+
   render() {
     const {
       todos,
