@@ -51,4 +51,9 @@ module.exports = {
   plugins,
   devtool: 'eval-source-map',
   devServer,
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 }
