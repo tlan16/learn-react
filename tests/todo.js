@@ -1,64 +1,9 @@
 /* eslint-disable function-paren-newline */
 import deepFreeze from 'deep-freeze'
-import { combineReducers, createStore } from 'redux'
-
-// actions
-const ADD_TODO = 'ADD_TODO'
-const TOGGLE_TODO = 'TOGGLE_TODO'
-const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
-
-// default visibility filter
-const SHOW_ALL = 'SHOW_ALL'
-
-const todoReducer = (state = {}, action) => {
-  switch (action.type) {
-    case ADD_TODO:
-      return {
-        id: action.id,
-        text: action.text,
-        completed: false,
-      }
-
-    case TOGGLE_TODO:
-      return {
-        ...state,
-        completed: state.id === action.id,
-      }
-
-    default:
-      return state
-  }
-}
-
-const todosReducer = (state = [], action) => {
-  switch (action.type) {
-    case ADD_TODO:
-      return [
-        ...state,
-        todoReducer(undefined, action),
-      ]
-
-    case TOGGLE_TODO:
-      return state.map(todo => todoReducer(todo, action))
-
-    default:
-      return state
-  }
-}
-
-const visibilityReducer = (state = SHOW_ALL, action) => {
-  switch (action.type) {
-    case SET_VISIBILITY_FILTER:
-      return action.filter
-    default:
-      return state
-  }
-}
-
-const appReducer = combineReducers({
-  todos: todosReducer,
-  visibilityFilter: visibilityReducer,
-})
+import { ADD_TODO, TOGGLE_TODO } from '../src/todo/actions'
+import store from '../src/store'
+import { initialState as visibilityInitialState } from '../src/todo/reducers/visibility'
+import todosReducer, { initialState as todosInitialState } from '../src/todo/reducers/todos'
 
 test('testAddTodo', () => {
   const stateBefore = []
@@ -71,8 +16,8 @@ test('testAddTodo', () => {
 
   const stateAfter = [
     {
-      id: 0,
-      text: 'Learn redux',
+      id: action.id,
+      text: action.text,
       completed: false,
     },
   ]
@@ -106,13 +51,10 @@ test('testToggleTodo', () => {
 
   const stateAfter = [
     {
-      id: 0,
-      text: 'Learn redux',
-      completed: false,
+      ...stateBefore[0],
     },
     {
-      id: 1,
-      text: 'Go shopping',
+      ...stateBefore[1],
       completed: true,
     },
   ]
@@ -126,11 +68,9 @@ test('testToggleTodo', () => {
 })
 
 test('testAppInitialState', () => {
-  const store = createStore(appReducer)
-
   const initialState = {
-    todos: [],
-    visibilityFilter: 'SHOW_ALL',
+    todos: todosInitialState,
+    visibilityFilter: visibilityInitialState,
   }
 
   expect(
@@ -139,7 +79,6 @@ test('testAppInitialState', () => {
 })
 
 test('testAppAddTodo', () => {
-  const store = createStore(appReducer)
   const action = {
     type: ADD_TODO,
     id: 0,
@@ -150,11 +89,11 @@ test('testAppAddTodo', () => {
 
   const state = {
     todos: [{
-      id: 0,
-      text: 'Learn redux',
+      id: action.id,
+      text: action.text,
       completed: false,
     }],
-    visibilityFilter: 'SHOW_ALL',
+    visibilityFilter: visibilityInitialState,
   }
 
   expect(

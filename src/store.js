@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from 'redux'
 import todoAppReducers from './todo/reducers'
 
-const appReducer = combineReducers({
+export const appReducer = combineReducers({
   ...todoAppReducers,
 })
 
