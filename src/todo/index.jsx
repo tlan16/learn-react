@@ -1,19 +1,27 @@
 import uuid from 'uuid/v4'
 import React, { Component } from 'react'
-import { ADD_TODO } from './actions'
 
 class TodoApp extends Component {
   render() {
-    const { store, todos } = this.props
+    const {
+      todos,
+      addTodo,
+    } = this.props
 
     return (
       <div>
+        <input
+          type="text"
+          ref={node => {
+            this.input = node
+          }}
+        />
         <button onClick={() => {
-          store.dispatch({
-            type: ADD_TODO,
-            text: 'Test',
+          addTodo({
             id: uuid(),
+            text: this.input.value,
           })
+          this.input.value = ''
         }}
         >
           Add Todo
