@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import store from '../store'
-import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO } from './actions'
+import { ADD_TODO, TOGGLE_TODO } from './actions'
 import TodoList from './components/todoList'
 import AddTodo from './components/addTodo'
 import Footer from './components/footer'
@@ -19,13 +19,6 @@ const toggleTodo = id => {
   store.dispatch({
     type: TOGGLE_TODO,
     id,
-  })
-}
-
-const setVisibility = filter => {
-  store.dispatch({
-    type: SET_VISIBILITY_FILTER,
-    filter,
   })
 }
 
@@ -52,10 +45,7 @@ const TodoApp = ({
       }
       onTodoClick={toggleTodo}
     />
-    <Footer
-      visibilityFilter={visibilityFilter}
-      onFilterClick={setVisibility}
-    />
+    <Footer />
   </div>
 )
 
