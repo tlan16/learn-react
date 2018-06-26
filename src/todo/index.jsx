@@ -1,24 +1,54 @@
 import uuid from 'uuid/v4'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import store from '../store'
+import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO } from './actions'
 
 class TodoApp extends Component {
-  static propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.object),
-    addTodo: PropTypes.func.isRequired,
-    toggleTodo: PropTypes.func.isRequired,
+  static addTodo = todo => {
+    store.dispatch({
+      type: ADD_TODO,
+      ...todo,
+    })
   }
 
-  static defaultProps = {
-    todos: [],
+  static toggleTodo = todo => {
+    store.dispatch({
+      type: TOGGLE_TODO,
+      ...todo,
+    })
+  }
+
+  static propTypes = {
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+    visibilityFilter: PropTypes.string.isRequired,
+  }
+
+  static setVisibility = filter => {
+    store.dispatch({
+      type: SET_VISIBILITY_FILTER,
+      filter,
+    })
+  }
+
+  static getVisibleTodos = (todos = [], filter) => {
+    switch (filter) {
+      case 'SHOW_COMPLETED':
+        return todos.filter(t => t.completed)
+      case 'SHOW_ACTIVE':
+        return todos.filter(t => !t.completed)
+      default:
+        return todos
+    }
   }
 
   render() {
     const {
       todos,
-      addTodo,
-      toggleTodo,
+      visibilityFilter,
     } = this.props
+
+    const visibleTodos = TodoApp.getVisibleTodos(todos, visibilityFilter)
 
     return (
       <div>
@@ -30,7 +60,7 @@ class TodoApp extends Component {
         />
         <button
           onClick={() => {
-          addTodo({
+          TodoApp.addTodo({
             id: uuid(),
             text: this.input.value,
           })
@@ -41,7 +71,7 @@ class TodoApp extends Component {
         </button>
 
         <ul>
-          {todos.map(todo => (
+          {visibleTodos.map(todo => (
             <li
               key={todo.id}
               style={{
@@ -49,8 +79,8 @@ class TodoApp extends Component {
               }}
             >{todo.text}
               <button onClick={() => {
-                toggleTodo({
-                    id: todo.id,
+                TodoApp.toggleTodo({
+                  id: todo.id,
                 })
             }}
               >Toggle
@@ -58,9 +88,47 @@ class TodoApp extends Component {
             </li>
           ))}
         </ul>
+
+        <p>
+          Show:
+          {' '}
+          <FilterLink
+            filter="SHOW_ALL"
+            currentFilter={visibilityFilter}
+          >All
+          </FilterLink>
+          {' '}
+          <FilterLink
+            filter="SHOW_ACTIVE"
+            currentFilter={visibilityFilter}
+          >Active
+          </FilterLink>
+          {' '}
+          <FilterLink
+            filter="SHOW_COMPLETED"
+            currentFilter={visibilityFilter}
+          >Completed
+          </FilterLink>
+        </p>
       </div>
     )
   }
+}
+
+const FilterLink = ({ filter, currentFilter, children }) =>
+  <button
+    disabled={filter === currentFilter}
+    onClick={e => {
+    e.preventDefault()
+    TodoApp.setVisibility(filter)
+  }}
+  >{children}
+  </button>
+
+FilterLink.propTypes = {
+  filter: PropTypes.string.isRequired,
+  currentFilter: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 }
 
 export default TodoApp
