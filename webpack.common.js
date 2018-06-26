@@ -1,7 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const { HotModuleReplacementPlugin } = require('webpack')
 const Dotenv = require('dotenv-webpack')
 
 const javascriptLoader = {
@@ -21,15 +21,7 @@ const plugins = [
   new CleanWebpackPlugin(['dist']),
   new HtmlWebpackPlugin(),
   new Dotenv(),
-  new HotModuleReplacementPlugin(),
 ]
-
-const devServer = {
-  bonjour: true,
-  compress: true,
-  hot: true,
-  https: true,
-}
 
 module.exports = {
   entry: {
@@ -49,11 +41,4 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   plugins,
-  devtool: 'eval-source-map',
-  devServer,
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
 }
