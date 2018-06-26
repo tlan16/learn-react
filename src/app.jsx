@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import store from './todo/store'
+import store from './store'
 import TodoApp from './todo/index'
 
 const render = rootElement => {
