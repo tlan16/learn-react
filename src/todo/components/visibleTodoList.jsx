@@ -3,7 +3,7 @@ import store from '../../store'
 import { TOGGLE_TODO } from '../actions'
 import TodoList from './todoList'
 
-function getVisibleTodos(todos = [], filter) {
+const getVisibleTodos = (todos = [], filter) => {
   switch (filter) {
     case 'SHOW_COMPLETED':
       return todos.filter(t => t.completed)
@@ -14,7 +14,7 @@ function getVisibleTodos(todos = [], filter) {
   }
 }
 
-function toggleTodo(id) {
+const toggleTodo = id => {
   store.dispatch({
     type: TOGGLE_TODO,
     id,
