@@ -1,9 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import uuid from 'uuid/v4'
+import store from '../../store'
+import { ADD_TODO } from '../actions'
 
-const AddTodo = ({
-  onAddClick,
-}) => {
+const addTodo = text => {
+  store.dispatch({
+    type: ADD_TODO,
+    id: uuid(),
+    text,
+  })
+}
+
+const AddTodo = () => {
   let input
 
   return (
@@ -16,17 +24,13 @@ const AddTodo = ({
       />
       <button
         onClick={() => {
-        onAddClick(input.value)
+        addTodo(input.value)
         input.value = ''
       }}
       >Add Todo
       </button>
     </div>
   )
-}
-
-AddTodo.propTypes = {
-  onAddClick: PropTypes.func.isRequired,
 }
 
 export default AddTodo
