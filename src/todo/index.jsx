@@ -1,11 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import store from '../store'
-import { ADD_TODO, TOGGLE_TODO } from './actions'
-import TodoList from './components/todoList'
+import { ADD_TODO } from './actions'
 import AddTodo from './components/addTodo'
 import Footer from './components/footer'
+import VisibleTodoList from './components/visibleTodoList'
 
 const addTodo = text => {
   store.dispatch({
@@ -15,43 +14,12 @@ const addTodo = text => {
   })
 }
 
-const toggleTodo = id => {
-  store.dispatch({
-    type: TOGGLE_TODO,
-    id,
-  })
-}
-
-const getVisibleTodos = (todos = [], filter) => {
-  switch (filter) {
-    case 'SHOW_COMPLETED':
-      return todos.filter(t => t.completed)
-    case 'SHOW_ACTIVE':
-      return todos.filter(t => !t.completed)
-    default:
-      return todos
-  }
-}
-
-const TodoApp = ({
-  todos,
-  visibilityFilter,
-}) => (
+const TodoApp = () => (
   <div>
     <AddTodo onAddClick={addTodo} />
-    <TodoList
-      todos={
-        getVisibleTodos(todos, visibilityFilter)
-      }
-      onTodoClick={toggleTodo}
-    />
+    <VisibleTodoList />
     <Footer />
   </div>
 )
-
-TodoApp.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  visibilityFilter: PropTypes.string.isRequired,
-}
 
 export default TodoApp
