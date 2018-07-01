@@ -1,4 +1,4 @@
-export const initialState = 'SHOW_ALL'
+export const initialState = 'all'
 
 const visibilityReducer = (state = initialState, action) => {
   switch (action.type) {

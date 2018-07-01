@@ -9,7 +9,7 @@ const store = configureStore()
 const TodoApp = () => (
   <Provider store={store}>
     <Router>
-      <Route path="/" component={App} />
+      <Route path="/:filter?" component={App} />
     </Router>
   </Provider>
 )
