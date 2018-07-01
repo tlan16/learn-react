@@ -18,4 +18,15 @@ const todosReducer = (state = initialState, action) => {
   }
 }
 
+export const getVisibleTodos = (state, filter) => {
+  switch (filter) {
+    case 'completed':
+      return state.filter(t => t.completed)
+    case 'active':
+      return state.filter(t => !t.completed)
+    default:
+      return state
+  }
+}
+
 export default todosReducer
