@@ -8,7 +8,9 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   onClick: () => {
-    setVisibility(dispatch, props.filter)
+    dispatch(
+      setVisibility(props.filter),
+    )
   },
 })
 

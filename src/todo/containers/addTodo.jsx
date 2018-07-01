@@ -10,13 +10,15 @@ const AddTodo = ({ dispatch }) => {
     <div>
       <input
         type="text"
-        ref={node => {
+        ref={(node) => {
           input = node
         }}
       />
       <button
         onClick={() => {
-          addTodo(dispatch, input.value)
+          dispatch(
+            addTodo(input.value),
+          )
           input.value = ''
         }}
       >Add Todo
