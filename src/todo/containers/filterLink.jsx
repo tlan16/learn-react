@@ -1,32 +1,47 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import store from '../../store'
 import Link from '../components/link'
-import { setVisibility } from '../actions/index'
+import { setVisibility } from '../actions'
 
-const FilterLink = ({
-  filter,
-  children,
-}) => {
-  const state = store.getState()
+class FilterLink extends Component {
+  static propTypes = {
+    filter: PropTypes.string.isRequired,
+    children: PropTypes.string.isRequired,
+  }
 
-  return (
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    <Link
-      active={
+  static contextTypes = {
+    store: PropTypes.object,
+  }
+
+  componentDidMount() {
+    const { store } = this.context
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate(),
+    )
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe()
+  }
+
+  render() {
+    const { store } = this.context
+    const state = store.getState()
+    const { filter, children } = this.props
+
+    return (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <Link
+        active={
           filter !== state.visibilityFilter
         }
-      onClick={() => {
-          setVisibility(filter)
+        onClick={() => {
+          setVisibility(store, filter)
         }}
-    >{children}
-    </Link>
-  )
-}
-
-FilterLink.propTypes = {
-  filter: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+      >{children}
+      </Link>
+    )
+  }
 }
 
 export default FilterLink

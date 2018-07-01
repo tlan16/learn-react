@@ -1,5 +1,5 @@
-import React from 'react'
-import store from '../../store'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import TodoList from '../components/todoList'
 import { toggleTodo } from '../actions'
 
@@ -14,22 +14,40 @@ const getVisibleTodos = (todos = [], filter) => {
   }
 }
 
-const VisibleTodoList = () => {
-  const state = store.getState()
+class VisibleTodoList extends Component {
+  static contextTypes = {
+    store: PropTypes.object,
+  }
 
-  return (
-    <TodoList
-      todos={
-        getVisibleTodos(
-          state.todos,
-          state.visibilityFilter,
-        )
-      }
-      onTodoClick={id =>
-        toggleTodo(id)
-      }
-    />
-  )
+  componentDidMount() {
+    const { store } = this.context
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate(),
+    )
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe()
+  }
+
+  render() {
+    const { store } = this.context
+    const state = store.getState()
+
+    return (
+      <TodoList
+        todos={
+          getVisibleTodos(
+            state.todos,
+            state.visibilityFilter,
+          )
+        }
+        onTodoClick={id =>
+          toggleTodo(store, id)
+        }
+      />
+    )
+  }
 }
 
 export default VisibleTodoList

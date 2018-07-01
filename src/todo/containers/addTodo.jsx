@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
-import { addTodo } from '../actions/index'
+import PropTypes from 'prop-types'
+import { addTodo } from '../actions'
 
 class AddTodo extends Component {
+  componentDidMount() {
+    const { store } = this.context
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate(),
+    )
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe()
+  }
+
   input = undefined
 
   render() {
@@ -15,7 +27,7 @@ class AddTodo extends Component {
         />
         <button
           onClick={() => {
-            addTodo(this.input.value)
+            addTodo(this.context.store, this.input.value)
             this.input.value = ''
           }}
         >Add Todo
@@ -23,6 +35,10 @@ class AddTodo extends Component {
       </div>
     )
   }
+}
+
+AddTodo.contextTypes = {
+  store: PropTypes.object,
 }
 
 export default AddTodo
