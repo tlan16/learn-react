@@ -1,18 +1,7 @@
 import React, { Component } from 'react'
 import { addTodo } from '../actions/index'
-import store from '../../store'
 
 class AddTodo extends Component {
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate()
-    })
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe()
-  }
-
   input = undefined
 
   render() {
