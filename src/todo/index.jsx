@@ -1,17 +1,13 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import AddTodo from './containers/addTodo'
-import Footer from './components/footer'
-import VisibleTodoList from './containers/visibleTodoList'
-import store from './store'
+import configureStore from './store'
+import App from './components'
+
+const store = configureStore()
 
 const TodoApp = () => (
   <Provider store={store}>
-    <div>
-      <AddTodo />
-      <VisibleTodoList />
-      <Footer />
-    </div>
+    <App />
   </Provider>
 )
 
