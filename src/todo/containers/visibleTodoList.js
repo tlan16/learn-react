@@ -30,17 +30,11 @@ const mapStateToProps = (
   ),
 })
 
-const mapDispatchToProps = dispatch => ({
-  onTodoClick(id) {
-    dispatch(
-      toggleTodo(id),
-    )
-  },
-})
-
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps,
+    {
+      onTodoClick: toggleTodo,
+    },
   )(TodoList),
 )
