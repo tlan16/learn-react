@@ -8,8 +8,8 @@ export const addTodo = (dispatch, text) => {
   })
 }
 
-export const setVisibility = (store, filter) => {
-  store.dispatch({
+export const setVisibility = (dispatch, filter) => {
+  dispatch({
     type: 'SET_VISIBILITY_FILTER',
     filter,
   })
