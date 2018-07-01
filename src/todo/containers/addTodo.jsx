@@ -3,12 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 
-const mapStateToProps = () => ({})
-
-const mapDispatchToProps = dispatch => ({
-  dispatch,
-})
-
 const AddTodo = ({ dispatch }) => {
   let input
 
@@ -35,7 +29,4 @@ AddTodo.propTypes = {
   dispatch: PropTypes.func.isRequired,
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(AddTodo)
+export default connect()(AddTodo)
