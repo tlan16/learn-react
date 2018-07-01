@@ -13,6 +13,7 @@ const devServer = {
   compress: true,
   hot: true,
   https: true,
+  historyApiFallback: true,
 }
 
 module.exports = merge(common, {
