@@ -45,11 +45,12 @@
     "webpack-merge": "^4.1.3"
   },
   "dependencies": {
+    "lodash.throttle": "^4.1.1",
+    "prop-types": "latest",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "uuid": "^3.2.1",
-    "prop-types": "latest",
-    "react-redux": "latest"
+    "uuid": "^3.2.1"
   }
 }
