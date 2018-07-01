@@ -2,15 +2,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import store from '../../store'
-import Link from './link'
-import { SET_VISIBILITY_FILTER } from '../actions'
-
-const setVisibility = filter => {
-  store.dispatch({
-    type: SET_VISIBILITY_FILTER,
-    filter,
-  })
-}
+import Link from '../components/link'
+import { setVisibility } from '../actions/index'
 
 class FilterLink extends Component {
   componentDidMount() {

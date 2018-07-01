@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import store from '../../store'
-import { TOGGLE_TODO } from '../actions'
-import TodoList from './todoList'
+import TodoList from '../components/todoList'
+import { toggleTodo } from '../actions'
 
 const getVisibleTodos = (todos = [], filter) => {
   switch (filter) {
@@ -12,13 +12,6 @@ const getVisibleTodos = (todos = [], filter) => {
     default:
       return todos
   }
-}
-
-const toggleTodo = id => {
-  store.dispatch({
-    type: TOGGLE_TODO,
-    id,
-  })
 }
 
 class VisibleTodoList extends Component {
