@@ -15,8 +15,8 @@ export const setVisibility = (store, filter) => {
   })
 }
 
-export const toggleTodo = (store, id) => {
-  store.dispatch({
+export const toggleTodo = (dispatch, id) => {
+  dispatch({
     type: 'TOGGLE_TODO',
     id,
   })
