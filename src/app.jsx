@@ -6,9 +6,7 @@ import { REACT_ROOT_ELEMENT_ID } from './index'
 
 const render = () => {
   ReactDOM.render(
-    <TodoApp
-      {...store.getState()}
-    />,
+    <TodoApp />,
     document.getElementById(REACT_ROOT_ELEMENT_ID),
     () => store.subscribe(render),
   )
