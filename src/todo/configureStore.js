@@ -25,6 +25,10 @@ const configureStore = () => {
   const store = createStore(
     todoAppReducers,
     persistedState,
+    process.env.NODE_ENV !== 'production'
+      // eslint-disable-next-line no-underscore-dangle
+      ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      : undefined,
   )
 
   if (process.env.NODE_ENV !== 'production') {
