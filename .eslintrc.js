@@ -7,7 +7,6 @@ module.exports = {
   'extends': 'airbnb',
   'rules': {
     'semi': 'off',
-    'arrow-parens': 'off',
     'import/prefer-default-export': 'off',
     'import/no-named-as-default': 'off',
     'comma-dangle': 'warn',
