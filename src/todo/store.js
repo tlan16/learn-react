@@ -1,15 +1,18 @@
 import { createStore } from 'redux'
 import todoAppReducers from './reducers'
+import { loadState, saveState } from './localStorage'
 
-const persistedState = {
-  todos: [{
-    id: '0',
-    text: 'Welcome back!',
-    completed: false,
-  }],
-}
+const persistedState = loadState()
 
-export const store = createStore(
+const store = createStore(
   todoAppReducers,
   persistedState,
 )
+
+store.subscribe(() => {
+  saveState({
+    todos: store.getState().todos,
+  })
+})
+
+export default store
