@@ -1,7 +1,7 @@
 import uuid from 'uuid/v4'
 
-export const addTodo = (store, text) => {
-  store.dispatch({
+export const addTodo = (dispatch, text) => {
+  dispatch({
     type: 'ADD_TODO',
     id: uuid(),
     text,

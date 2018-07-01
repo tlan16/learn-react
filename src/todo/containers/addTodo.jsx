@@ -1,44 +1,41 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 
-class AddTodo extends Component {
-  componentDidMount() {
-    const { store } = this.context
-    this.unsubscribe = store.subscribe(() =>
-      this.forceUpdate(),
-    )
-  }
+const mapStateToProps = () => ({})
 
-  componentWillUnmount() {
-    this.unsubscribe()
-  }
+const mapDispatchToProps = dispatch => ({
+  dispatch,
+})
 
-  input = undefined
+const AddTodo = ({ dispatch }) => {
+  let input
 
-  render() {
-    return (
-      <div>
-        <input
-          type="text"
-          ref={node => {
-            this.input = node
-          }}
-        />
-        <button
-          onClick={() => {
-            addTodo(this.context.store, this.input.value)
-            this.input.value = ''
-          }}
-        >Add Todo
-        </button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <input
+        type="text"
+        ref={node => {
+          input = node
+        }}
+      />
+      <button
+        onClick={() => {
+          addTodo(dispatch, input.value)
+          input.value = ''
+        }}
+      >Add Todo
+      </button>
+    </div>
+  )
 }
 
-AddTodo.contextTypes = {
-  store: PropTypes.object,
+AddTodo.propTypes = {
+  dispatch: PropTypes.func.isRequired,
 }
 
-export default AddTodo
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AddTodo)
