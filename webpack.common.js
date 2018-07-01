@@ -25,7 +25,7 @@ const plugins = [
 
 module.exports = {
   entry: {
-    app: './src/index.jsx',
+    app: './src/index.js',
   },
   output: {
     filename: '[name].[hash].bundle.js',
