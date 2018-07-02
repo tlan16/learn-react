@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 import { createStore } from 'redux'
-import throttle from 'lodash.throttle'
 import todoAppReducers from './reducers'
-import { loadState, saveState } from './localStorage'
 
 const addLoggingToDispatch = (store) => {
   const rawDispatch = store.dispatch
@@ -20,11 +18,9 @@ const addLoggingToDispatch = (store) => {
 }
 
 const configureStore = () => {
-  const persistedState = loadState()
-
   const store = createStore(
     todoAppReducers,
-    persistedState,
+    undefined,
     process.env.NODE_ENV !== 'production'
       // eslint-disable-next-line no-underscore-dangle
       ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -34,12 +30,6 @@ const configureStore = () => {
   if (process.env.NODE_ENV !== 'production') {
     store.dispatch = addLoggingToDispatch(store)
   }
-
-  store.subscribe(throttle(() => {
-    saveState({
-      todos: store.getState().todos,
-    })
-  }, 1000))
 
   return store
 }
