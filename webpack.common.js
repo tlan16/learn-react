@@ -25,6 +25,7 @@ const plugins = [
 
 module.exports = {
   entry: {
+    'babel-polyfill': 'babel-polyfill',
     app: './src/index.js',
   },
   output: {
