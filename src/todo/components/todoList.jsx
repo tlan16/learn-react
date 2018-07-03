@@ -19,7 +19,11 @@ const TodoList = ({
   </ul>
 
 TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  })).isRequired,
   onTodoClick: PropTypes.func.isRequired,
 }
 
