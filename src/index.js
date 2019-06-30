@@ -1,4 +1,4 @@
-import App from './app'
+import {app} from './app'
 
 const { REACT_ROOT_DIV_ID } = process.env
 
@@ -10,4 +10,4 @@ function reactRoot() {
 
 document.body.appendChild(reactRoot())
 
-App(REACT_ROOT_DIV_ID)
+app(REACT_ROOT_DIV_ID)
