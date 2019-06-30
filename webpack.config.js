@@ -34,9 +34,7 @@ const plugins = [
 
 const devServer = {
   bonjour: true,
-  compress: true,
   hot: true,
-  https: true,
 }
 
 module.exports = {
