@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "build:analyse": "webpack --config webpack.prod.js --profile --json > stats.json && webpack-bundle-analyzer stats.json",
     "test": "jest"
   },
   "repository": {
@@ -33,6 +34,7 @@
     "jest": "^24.8.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.35.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
