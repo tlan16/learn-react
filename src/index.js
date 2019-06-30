@@ -1,6 +1,6 @@
 import App from './app'
 
-export const REACT_ROOT_DIV_ID = 'react-root'
+const { REACT_ROOT_DIV_ID } = process.env
 
 function reactRoot() {
   const element = document.createElement('div')

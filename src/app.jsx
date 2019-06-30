@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { REACT_ROOT_DIV_ID } from './index'
+
+const { REACT_ROOT_DIV_ID } = process.env
 
 const app = () => {
   ReactDOM.render(

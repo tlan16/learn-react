@@ -1,13 +1,21 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { HotModuleReplacementPlugin } = require('webpack')
 const Dotenv = require('dotenv-webpack')
 
 const javascriptLoader = {
   test: /\.(js|jsx)$/,
-  exclude: /node_modules/,
-  use: ['babel-loader'],
+  exclude: /(node_modules|bower_components)/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-react',
+      ],
+    },
+  },
 }
 
 const styleLoader = {
@@ -18,7 +26,7 @@ const styleLoader = {
 }
 
 const plugins = [
-  new CleanWebpackPlugin(['dist']),
+  new CleanWebpackPlugin(),
   new HtmlWebpackPlugin(),
   new Dotenv(),
   new HotModuleReplacementPlugin(),
