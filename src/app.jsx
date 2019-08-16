@@ -1,24 +1,13 @@
-// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {Wellcome, getGreeting, formatName} from './components/Wellcome';
+import Comment from './components/Comment';
 
 const { REACT_ROOT_DIV_ID } = process.env
 
 const user = {
   firstName: 'Frank',
   lastName: 'Lan',
-}
-
-const formatName = ({firstName, lastName}) => `${firstName} ${lastName}`
-
-const getGreeting = userObject => {
-  const strangerTextColor = 'blue'
-
-  if (userObject) {
-    return <span style={{color: 'green'}}>Hello, {formatName(user)}</span>
-  } else {
-    return <span style={{color:strangerTextColor}}>Hello, Stranger</span>
-  }
 }
 
 const maliciousInput = '<img src="javascript:alert(\'XSS!\')" />'
@@ -37,6 +26,22 @@ const app = () => {
           {maliciousInput}
           <br/>
           The malicious text above is shown as plain text instead of been executed.
+        </p>
+        <hr/>
+        <p>
+          <Wellcome user={user}/>
+          <br/>
+          <Wellcome user={undefined}/>
+          <br/>
+          <Wellcome user={{...user, firstName: 'Frank 2nd'}}/>
+        </p>
+        <hr/>
+        <p>
+          <Comment
+            author={{name: formatName(user), avatarUrl: 'https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.55Rvh-dU-JcIkNI2qapp7AHaHa%26pid%3DApi&f=1'}}
+            date={new Date('2018-12-25T00:00:00Z')}
+            text="Hello world"
+          />
         </p>
       </span>
     ),
