@@ -22,6 +22,7 @@
   "homepage": "https://github.com/tlan16/learn-react#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.2",
@@ -34,7 +35,6 @@
     "jest": "^24.8.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.35.0",
-    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
