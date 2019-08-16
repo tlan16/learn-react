@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Wellcome, getGreeting, formatName} from './components/Wellcome';
-import Comment from './components/Comment';
+import {Wellcome, getGreeting, formatName} from './components/Wellcome'
+import {Comment} from './components/Comment'
+import {Clock} from './components/Clock'
 
 const { REACT_ROOT_DIV_ID } = process.env
 
@@ -42,6 +43,10 @@ const app = () => {
             date={new Date('2018-12-25T00:00:00Z')}
             text="Hello world"
           />
+        </p>
+        <hr/>
+        <p>
+          <Clock/>
         </p>
       </span>
     ),
