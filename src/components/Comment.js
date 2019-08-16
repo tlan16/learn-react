@@ -5,17 +5,18 @@ import {UserInfo} from './UserInfo'
 const formatDate = date => date.toLocaleString()
 
 const Comment = props => (
-  <div className="Comment">
-    <p>
+  <span className="Comment" style={{display:'flex'}}>
+    <span style={{flexGrow: 2}}>
       <UserInfo user={props.author}/>
-      <div className="Comment-text">
+      <span className="Comment-text">
         {props.text}
-      </div>
-    </p>
-    <div className="Comment-date">
+      </span>
+    </span>
+    <br/>
+    <span className="Comment-date" style={{alignSelf:'flex-end'}}>
       {formatDate(props.date)}
-    </div>
-  </div>
+    </span>
+  </span>
 )
 
 export default Comment
