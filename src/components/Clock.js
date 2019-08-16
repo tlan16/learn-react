@@ -1,5 +1,5 @@
 import React from 'react'
-import FormattedDate from './FormattedDate';
+import {FormattedDate} from './FormattedDate'
 
 const Clock = class extends React.Component {
   #timerId
@@ -37,7 +37,6 @@ const Clock = class extends React.Component {
   }
 }
 
-export default Clock
 export {
   Clock,
 }

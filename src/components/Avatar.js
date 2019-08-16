@@ -12,7 +12,6 @@ const Avatar = props => (
   />
 )
 
-export default Avatar
 export {
   Avatar,
 }

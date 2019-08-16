@@ -10,7 +10,6 @@ const UserInfo = props => (
   </span>
 )
 
-export default UserInfo
 export {
   UserInfo,
 }

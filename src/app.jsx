@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {Wellcome, getGreeting, formatName} from './components/Wellcome'
 import {Comment} from './components/Comment'
 import {Clock} from './components/Clock'
+import {Toggle} from './components/Toggle'
 
 const { REACT_ROOT_DIV_ID } = process.env
 
@@ -48,6 +49,8 @@ const app = () => {
         <p>
           <Clock/>
         </p>
+        <hr/>
+        <Toggle/>
       </span>
     ),
     document.getElementById(REACT_ROOT_DIV_ID),

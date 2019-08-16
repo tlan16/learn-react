@@ -19,8 +19,6 @@ const Comment = props => (
   </span>
 )
 
-export default Comment
-
 export {
   Comment,
   formatDate

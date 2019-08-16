@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const FormattedDate = ({date}) => (
   <span>
@@ -6,7 +6,6 @@ const FormattedDate = ({date}) => (
   </span>
 )
 
-export default FormattedDate
 export {
   FormattedDate
 }
