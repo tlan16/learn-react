@@ -4,6 +4,7 @@ import {Wellcome, getGreeting, formatName} from './components/Wellcome'
 import {Comment} from './components/Comment'
 import {Clock} from './components/Clock'
 import {Toggle} from './components/Toggle'
+import { LoginControl } from './components/LoginControl'
 
 const { REACT_ROOT_DIV_ID } = process.env
 
@@ -51,6 +52,8 @@ const app = () => {
         </p>
         <hr/>
         <Toggle/>
+        <hr/>
+        <LoginControl/>
       </span>
     ),
     document.getElementById(REACT_ROOT_DIV_ID),

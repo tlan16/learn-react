@@ -27,9 +27,8 @@ const Toggle = class extends React.Component
           {this.state.isToggleOn === true ? 'ON' : 'OFF'}
         </button>
         {
-          typeof this.state.lastEventTriggeredAt === 'undefined'
-            ? undefined
-            : <span style={{float: 'right'}}>(Last event is triggered at <FormattedDate date={this.state.lastEventTriggeredAt}/>)</span>
+          typeof this.state.lastEventTriggeredAt !== 'undefined'
+          && <span style={{float: 'right'}}>(Last event is triggered at <FormattedDate date={this.state.lastEventTriggeredAt}/>)</span>
         }
       </span>
     )
