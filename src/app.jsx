@@ -5,6 +5,7 @@ import {Comment} from './components/Comment'
 import {Clock} from './components/Clock'
 import {Toggle} from './components/Toggle'
 import { LoginControl } from './components/LoginControl'
+import { NumberList } from './components/NumberList';
 
 const { REACT_ROOT_DIV_ID } = process.env
 
@@ -54,6 +55,8 @@ const app = () => {
         <Toggle/>
         <hr/>
         <LoginControl/>
+        <hr/>
+        <NumberList numbers={[1, 2, 3, 4, 5, 1]}/>
       </span>
     ),
     document.getElementById(REACT_ROOT_DIV_ID),
