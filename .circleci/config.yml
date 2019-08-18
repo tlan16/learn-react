@@ -9,6 +9,9 @@ jobs:
       - image: node:12.8.1-alpine
     steps:
       - checkout
+      - run:
+          name: Install OS dependencies
+          command: apk add --no-cache ca-certificates
       - restore_cache:
           keys:
             - npm-cache-{{ checksum "package-lock.json" }}
