@@ -5,7 +5,13 @@ import {Comment} from './components/Comment'
 import {Clock} from './components/Clock'
 import {Toggle} from './components/Toggle'
 import { LoginControl } from './components/LoginControl'
-import { NumberList } from './components/NumberList';
+import { NumberList } from './components/NumberList'
+import { NameForm } from './components/NameForm'
+import { EssayForm } from './components/EssayForm'
+import { FlavorForm } from './components/FlavorForm'
+import { FlavorsForm } from './components/FlavorsForm'
+import { FileForm } from './components/FileForm'
+import { Reservation } from './components/Reservation'
 
 const { REACT_ROOT_DIV_ID } = process.env
 
@@ -57,6 +63,18 @@ const app = () => {
         <LoginControl/>
         <hr/>
         <NumberList numbers={[1, 2, 3, 4, 5, 1]}/>
+        <hr/>
+        <NameForm/>
+        <br/>
+        <EssayForm/>
+        <br/>
+        <FlavorForm/>
+        <br/>
+        <FlavorsForm/>
+        <br/>
+        <FileForm/>
+        <hr/>
+        <Reservation/>
       </span>
     ),
     document.getElementById(REACT_ROOT_DIV_ID),
