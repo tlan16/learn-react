@@ -12,6 +12,7 @@ import { FlavorForm } from './components/FlavorForm'
 import { FlavorsForm } from './components/FlavorsForm'
 import { FileForm } from './components/FileForm'
 import { Reservation } from './components/Reservation'
+import { Calculator } from './components/Calculator'
 
 const { REACT_ROOT_DIV_ID } = process.env
 
@@ -75,6 +76,8 @@ const app = () => {
         <FileForm/>
         <hr/>
         <Reservation/>
+        <hr/>
+        <Calculator/>
       </span>
     ),
     document.getElementById(REACT_ROOT_DIV_ID),
