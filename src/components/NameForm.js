@@ -3,6 +3,10 @@ import uuidv4 from 'uuid/v4'
 
 const NameForm = class extends React.Component
 {
+  #inputRefs = {
+    name: React.createRef(),
+  }
+
   #inputFieldsId = {
     name: uuidv4(),
   }
@@ -35,6 +39,7 @@ const NameForm = class extends React.Component
           <input
             type="text"
             name="name"
+            ref={this.#inputRefs.name}
             id={this.#inputFieldsId.name}
             value={this.state.value}
             onChange={this.handleChange}
