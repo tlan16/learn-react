@@ -1,9 +1,9 @@
 import React from 'react'
 import loadable from '@loadable/component'
-import {Loading} from '../components/Loading'
+import {Loading} from '../../components/Loading'
 
 const Clock = loadable(
-  () => import('../components/Clock'),
+  () => import('../../components/Clock'),
   {
     fallback: <Loading/>,
   }

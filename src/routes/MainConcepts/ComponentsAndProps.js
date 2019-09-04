@@ -1,11 +1,11 @@
 import React from 'react'
-import {formatName, Wellcome} from '../components/Wellcome'
-import avatar from '../static/avatar.jpg'
+import {formatName, Wellcome} from '../../components/Wellcome'
+import avatar from '../../static/avatar.jpg'
 import loadable from '@loadable/component'
-import {Loading} from '../components/Loading'
+import {Loading} from '../../components/Loading'
 
 const Comment = loadable(
-  () => import('../components/Comment'),
+  () => import('../../components/Comment'),
   {
     fallback: <Loading/>,
   }

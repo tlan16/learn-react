@@ -1,5 +1,5 @@
 import React from 'react'
-import {getGreeting} from '../components/Wellcome'
+import {getGreeting} from '../../components/Wellcome'
 
 const IntroducingJsx = class extends React.Component {
   #user = {

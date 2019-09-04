@@ -1,7 +1,12 @@
 import React from 'react'
+import uuidv4 from 'uuid/v4'
 
 const NameForm = class extends React.Component
 {
+  #inputFieldsId = {
+    name: uuidv4(),
+  }
+
   constructor(props) {
     super(props)
     this.state = {value: ''}
@@ -25,11 +30,12 @@ const NameForm = class extends React.Component
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <label htmlFor={this.#inputFieldsId.name}>
           Name:
           <input
             type="text"
             name="name"
+            id={this.#inputFieldsId.name}
             value={this.state.value}
             onChange={this.handleChange}
             aria-label="Name"

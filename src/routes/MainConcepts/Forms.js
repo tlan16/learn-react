@@ -1,37 +1,37 @@
 import React from 'react'
 import loadable from '@loadable/component'
-import {Loading} from '../components/Loading'
+import {Loading} from '../../components/Loading'
 
 const NameForm = loadable(
-  () => import('../components/NameForm'),
+  () => import('../../components/NameForm'),
   {
     fallback: <Loading/>,
   }
 )
 
 const EssayForm = loadable(
-  () => import('../components/EssayForm'),
+  () => import('../../components/EssayForm'),
   {
     fallback: <Loading/>,
   }
 )
 
 const FlavorsForm = loadable(
-  () => import('../components/FlavorsForm'),
+  () => import('../../components/FlavorsForm'),
   {
     fallback: <Loading/>,
   }
 )
 
 const FileForm = loadable(
-  () => import('../components/FileForm'),
+  () => import('../../components/FileForm'),
   {
     fallback: <Loading/>,
   }
 )
 
 const Reservation = loadable(
-  () => import('../components/Reservation'),
+  () => import('../../components/Reservation'),
   {
     fallback: <Loading/>,
   }
