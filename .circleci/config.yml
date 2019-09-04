@@ -15,7 +15,7 @@ jobs:
             apk add --no-cache --no-progress \
               ca-certificates \
               build-base \
-              autoreconf \
+              autoconf \
               automake \
               libpng \
               optipng \
