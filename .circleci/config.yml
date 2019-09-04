@@ -11,7 +11,12 @@ jobs:
       - checkout
       - run:
           name: Install OS dependencies
-          command: apk add --no-cache ca-certificates libpng zlib autoconf automake gcc
+          command: |
+            apk add --no-cache --no-progress \
+              ca-certificates \
+              libpng \
+              optipng \
+              build-base
       - restore_cache:
           keys:
             - npm-cache-{{ checksum "package-lock.json" }}
