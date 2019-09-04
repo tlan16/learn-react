@@ -6,7 +6,7 @@ class AppRouter extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <main className="App">
           <Route path="/" exact component={Routes.Index}/>
           <Route path="/hello_world/" component={Routes.HelloWorld}/>
           <Route path="/introducing_jsx/" component={Routes.IntroducingJsx}/>
@@ -22,7 +22,7 @@ class AppRouter extends Component {
           <Route path="/list_and_keys/" component={Routes.ListsAndKeys}/>
           <Route path="/forms/" component={Routes.Forms}/>
           <Route path="/lifting_state_up/" component={Routes.LiftingStateUp}/>
-        </div>
+        </main>
       </Router>
     )
   }
