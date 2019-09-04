@@ -9,6 +9,7 @@ const plugins = [
 const devServer = {
   bonjour: true,
   hot: true,
+  host: '0.0.0.0',
   historyApiFallback: true,
   open: true,
 }
@@ -19,7 +20,7 @@ const optimization = {
 module.exports = merge(common, {
   mode: 'development',
   plugins,
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   devServer,
   optimization,
 })

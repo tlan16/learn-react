@@ -18,6 +18,16 @@ const styleLoader = {
   ],
 }
 
+const imageLoader = {
+  test: /\.(gif|png|jpe?g|svg)$/i,
+  use: [
+    'file-loader',
+    {
+      loader: 'image-webpack-loader',
+    },
+  ],
+}
+
 const plugins = [
   new CleanWebpackPlugin(),
   new HtmlWebpackPlugin(),
@@ -31,11 +41,13 @@ module.exports = {
   output: {
     filename: '[name].[hash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
       javascriptLoader,
       styleLoader,
+      imageLoader,
     ],
   },
   resolve: {
