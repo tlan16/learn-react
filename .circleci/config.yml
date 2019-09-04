@@ -19,7 +19,8 @@ jobs:
               automake \
               libpng \
               optipng \
-              libwebp-tools
+              libwebp-tools \
+              gifsicle
       - restore_cache:
           keys:
             - npm-cache-{{ checksum "package-lock.json" }}
