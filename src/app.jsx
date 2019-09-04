@@ -1,89 +1,33 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {Wellcome, getGreeting, formatName} from './components/Wellcome'
-import {Comment} from './components/Comment'
-import {Clock} from './components/Clock'
-import {Toggle} from './components/Toggle'
-import { LoginControl } from './components/LoginControl'
-import { NumberList } from './components/NumberList'
-import { NameForm } from './components/NameForm'
-import { EssayForm } from './components/EssayForm'
-import { FlavorForm } from './components/FlavorForm'
-import { FlavorsForm } from './components/FlavorsForm'
-import { FileForm } from './components/FileForm'
-import { Reservation } from './components/Reservation'
-import { Calculator } from './components/Calculator'
+import React, {Component} from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import * as Routes from './routes'
 
-const { REACT_ROOT_DIV_ID } = process.env
-
-const user = {
-  firstName: 'Frank',
-  lastName: 'Lan',
-}
-
-const maliciousInput = '<img src="javascript:alert(\'XSS!\')" />'
-
-const app = () => {
-  ReactDOM.render(
-    (
-      <span>
-        <p>Hello, world!</p>
-        <p>
-          <span>{getGreeting(user)}</span>
-          <br/>
-          <span>{getGreeting(undefined)}</span>
-        </p>
-        <p>
-          {maliciousInput}
-          <br/>
-          The malicious text above is shown as plain text instead of been executed.
-        </p>
-        <hr/>
-        <p>
-          <Wellcome user={user}/>
-          <br/>
-          <Wellcome user={undefined}/>
-          <br/>
-          <Wellcome user={{...user, firstName: 'Frank 2nd'}}/>
-        </p>
-        <hr/>
-        <p>
-          <Comment
-            author={{name: formatName(user), avatarUrl: 'https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.55Rvh-dU-JcIkNI2qapp7AHaHa%26pid%3DApi&f=1'}}
-            date={new Date('2018-12-25T00:00:00Z')}
-            text="Hello world"
-          />
-        </p>
-        <hr/>
-        <p>
-          <Clock/>
-        </p>
-        <hr/>
-        <Toggle/>
-        <hr/>
-        <LoginControl/>
-        <hr/>
-        <NumberList numbers={[1, 2, 3, 4, 5, 1]}/>
-        <hr/>
-        <NameForm/>
-        <br/>
-        <EssayForm/>
-        <br/>
-        <FlavorForm/>
-        <br/>
-        <FlavorsForm/>
-        <br/>
-        <FileForm/>
-        <hr/>
-        <Reservation/>
-        <hr/>
-        <Calculator/>
-      </span>
-    ),
-    document.getElementById(REACT_ROOT_DIV_ID),
-  )
+class AppRouter extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Route path="/" exact component={Routes.Index}/>
+          <Route path="/hello_world/" component={Routes.HelloWorld}/>
+          <Route path="/introducing_jsx/" component={Routes.IntroducingJsx}/>
+          <Route path="/rendering_elements/"
+            component={Routes.RenderingElements}/>
+          <Route path="/components_and_props/"
+            component={Routes.ComponentsAndProps}/>
+          <Route path="/state_and_lifecycle/"
+            component={Routes.StateAndLifecycle}/>
+          <Route path="/handling_events/" component={Routes.HandlingEvents}/>
+          <Route path="/conditional_rendering/"
+            component={Routes.ConditionalRendering}/>
+          <Route path="/list_and_keys/" component={Routes.ListsAndKeys}/>
+          <Route path="/forms/" component={Routes.Forms}/>
+          <Route path="/lifting_state_up/" component={Routes.LiftingStateUp}/>
+        </div>
+      </Router>
+    )
+  }
 }
 
 export {
-  app,
+  AppRouter,
 }

@@ -1,4 +1,6 @@
-import {app} from './app'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {AppRouter} from './app'
 
 const { REACT_ROOT_DIV_ID } = process.env
 
@@ -10,4 +12,4 @@ function reactRoot() {
 
 document.body.appendChild(reactRoot())
 
-app(REACT_ROOT_DIV_ID)
+ReactDOM.render(<AppRouter />, document.getElementById(REACT_ROOT_DIV_ID))

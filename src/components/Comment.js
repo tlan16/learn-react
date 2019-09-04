@@ -1,5 +1,4 @@
 import React from 'react'
-import {Avatar} from './Avatar'
 import {UserInfo} from './UserInfo'
 
 const formatDate = date => date.toLocaleString()
