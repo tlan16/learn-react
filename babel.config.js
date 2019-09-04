@@ -13,7 +13,7 @@ module.exports = {
             'not ie <= 11',
             'not op_mini all',
           ],
-          'node': 'current',
+          'node': '12',
         },
       },
     ],
