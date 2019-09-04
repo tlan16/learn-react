@@ -29,8 +29,12 @@ const NameForm = class extends React.Component
           Name:
           <input
             type="text"
+            name="name"
             value={this.state.value}
             onChange={this.handleChange}
+            aria-label="Name"
+            required={true}
+            aria-required="true"
           />
         </label>
         <span>&nbsp;</span>
