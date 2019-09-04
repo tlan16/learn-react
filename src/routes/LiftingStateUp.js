@@ -1,7 +1,19 @@
 import React from 'react'
-import {Calculator} from '../components/Calculator'
+import loadable from '@loadable/component'
+import {Loading} from '../components/Loading'
 
-const LiftingStateUp = () => <Calculator/>
+const Calculator = loadable(
+  () => import('../components/Calculator'),
+  {
+    fallback: <Loading/>,
+  }
+)
+
+const LiftingStateUp = class extends React.Component {
+  render() {
+    return <Calculator/>
+  }
+}
 
 export {
   LiftingStateUp,

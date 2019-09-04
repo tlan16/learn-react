@@ -49,3 +49,5 @@ const FileForm = class extends React.Component
 export {
   FileForm,
 }
+
+export default FileForm

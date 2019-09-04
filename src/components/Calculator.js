@@ -78,3 +78,5 @@ const Calculator = class extends React.Component
 export {
   Calculator,
 }
+
+export default Calculator

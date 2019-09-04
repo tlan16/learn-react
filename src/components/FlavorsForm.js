@@ -66,3 +66,5 @@ const FlavorsForm = class extends React.Component
 export {
   FlavorsForm,
 }
+
+export default FlavorsForm

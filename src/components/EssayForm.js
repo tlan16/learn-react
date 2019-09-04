@@ -45,3 +45,5 @@ const EssayForm = class extends React.Component
 export {
   EssayForm,
 }
+
+export default EssayForm

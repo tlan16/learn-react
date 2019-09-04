@@ -43,3 +43,5 @@ const NameForm = class extends React.Component
 export {
   NameForm,
 }
+
+export default NameForm

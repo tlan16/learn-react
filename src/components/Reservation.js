@@ -74,3 +74,5 @@ const Reservation = class extends React.Component {
 export {
   Reservation,
 }
+
+export default Reservation

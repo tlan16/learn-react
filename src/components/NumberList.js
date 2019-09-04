@@ -33,3 +33,5 @@ const NumberList = props => (
 export {
   NumberList,
 }
+
+export default NumberList

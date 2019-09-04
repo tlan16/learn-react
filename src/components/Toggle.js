@@ -38,3 +38,5 @@ const Toggle = class extends React.Component
 export {
   Toggle,
 }
+
+export default Toggle

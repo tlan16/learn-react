@@ -19,3 +19,4 @@ export {
   getGreeting,
   formatName,
 }
+export default Wellcome

@@ -1,5 +1,13 @@
 import React from 'react'
-import {LoginControl} from '../components/LoginControl'
+import loadable from '@loadable/component'
+import {Loading} from '../components/Loading'
+
+const LoginControl = loadable(
+  () => import('../components/LoginControl'),
+  {
+    fallback: <Loading/>,
+  }
+)
 
 const ConditionalRendering = () => <LoginControl/>
 

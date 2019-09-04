@@ -56,3 +56,5 @@ const LoginControl = class extends React.Component {
 export {
   LoginControl,
 }
+
+export default LoginControl

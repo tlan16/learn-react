@@ -40,3 +40,5 @@ const Clock = class extends React.Component {
 export {
   Clock,
 }
+
+export default Clock

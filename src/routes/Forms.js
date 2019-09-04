@@ -1,10 +1,41 @@
 import React from 'react'
-import {NameForm} from '../components/NameForm'
-import {EssayForm} from '../components/EssayForm'
-import {FlavorForm} from '../components/FlavorForm'
-import {FlavorsForm} from '../components/FlavorsForm'
-import {FileForm} from '../components/FileForm'
-import {Reservation} from '../components/Reservation'
+import loadable from '@loadable/component'
+import {Loading} from '../components/Loading'
+
+const NameForm = loadable(
+  () => import('../components/NameForm'),
+  {
+    fallback: <Loading/>,
+  }
+)
+
+const EssayForm = loadable(
+  () => import('../components/EssayForm'),
+  {
+    fallback: <Loading/>,
+  }
+)
+
+const FlavorsForm = loadable(
+  () => import('../components/FlavorsForm'),
+  {
+    fallback: <Loading/>,
+  }
+)
+
+const FileForm = loadable(
+  () => import('../components/FileForm'),
+  {
+    fallback: <Loading/>,
+  }
+)
+
+const Reservation = loadable(
+  () => import('../components/Reservation'),
+  {
+    fallback: <Loading/>,
+  }
+)
 
 const Forms = () => (
   <React.Fragment>
@@ -12,7 +43,7 @@ const Forms = () => (
     <br/>
     <EssayForm/>
     <br/>
-    <FlavorForm/>
+    <FlavorsForm/>
     <br/>
     <FlavorsForm/>
     <br/>
