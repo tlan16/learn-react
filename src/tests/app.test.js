@@ -1,5 +1,5 @@
-const {app} = require('../app.jsx')
+const {AppRouter} = require('../app.jsx')
 
 test('app is a callable function', () => {
-  expect(typeof app).toBe('function')
+  expect(typeof AppRouter).toBe('function')
 })
