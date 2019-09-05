@@ -3,7 +3,19 @@
 FROM node:10.16.3-alpine AS builder
 
 ## Install OS dependencies
-RUN apk --no-cache add ca-certificates
+RUN apk --no-cache add \
+    ca-certificates \
+    build-base \
+    autoconf \
+    automake \
+    zlib \
+    bash \
+    libltdl \
+    libtool \
+    zlib-dev \
+    nasm
+ENV ACLOCAL_PATH=/usr/share/aclocal
+ENV LIBRARY_PATH=/lib:/usr/lib
 
 WORKDIR /opt/app
 COPY . .

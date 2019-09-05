@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 const javascriptLoader = {
@@ -22,6 +22,9 @@ const imageLoader = {
   test: /\.(gif|png|jpe?g|svg)$/i,
   use: [
     'file-loader',
+    {
+      loader: 'image-webpack-loader',
+    },
   ],
 }
 
