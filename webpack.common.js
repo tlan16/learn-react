@@ -55,5 +55,4 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   plugins,
-  devtool: 'eval-source-map',
 }
