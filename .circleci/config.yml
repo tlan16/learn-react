@@ -1,10 +1,7 @@
-defaults: &defaults
-  working_directory: /opt/app
-
 version: 2
 jobs:
   build:
-    <<: *defaults
+    working_directory: /opt/app
     docker:
       - image: node:10.16.3-alpine
     steps:
@@ -13,7 +10,18 @@ jobs:
           name: Install OS dependencies
           command: |
             apk add --no-cache --no-progress \
-              ca-certificates
+              ca-certificates \
+              build-base \
+              autoconf \
+              automake \
+              zlib \
+              bash \
+              libltdl \
+              libtool \
+              zlib-dev \
+              nasm
+            export ACLOCAL_PATH=/usr/share/aclocal
+            export LIBRARY_PATH=/lib:/usr/lib
       - restore_cache:
           keys:
             - npm-cache-{{ checksum "package-lock.json" }}
