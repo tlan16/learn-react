@@ -12,6 +12,14 @@ import {ListsAndKeys} from './routes/MainConcepts/ListsAndKeys'
 import {Forms} from './routes/MainConcepts/Forms'
 import {LiftingStateUp} from './routes/MainConcepts/LiftingStateUp'
 import {Accessibility} from './routes/AdvancedGuides/Accessibility'
+import {PrivateRoute} from './routes/PrivateRoute'
+import {Login} from './routes/Login'
+
+const Private = () => (
+  <React.Fragment>
+    Private
+  </React.Fragment>
+)
 
 class AppRouter extends Component {
   render() {
@@ -38,6 +46,8 @@ class AppRouter extends Component {
             component={LiftingStateUp}/>
           <Route path="/accessibility/"
             component={Accessibility}/>
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/protected/" component={Private}/>
         </main>
       </Router>
     )
