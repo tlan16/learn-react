@@ -8,7 +8,7 @@ const AuthButton = withRouter(
   ({history}) =>
     authService.isAuthenticated ? (
       <p>
-        Welcome!{' '}
+        Welcome {authService.authenticated.user.firstName}!
         <button
           onClick={() => {
             authService.signOut(() => history.push('/'))
