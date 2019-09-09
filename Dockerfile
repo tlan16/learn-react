@@ -17,6 +17,7 @@ RUN apk --no-cache add \
 ENV ACLOCAL_PATH=/usr/share/aclocal
 ENV LIBRARY_PATH=/lib:/usr/lib
 
+## Build
 WORKDIR /opt/app
 COPY . .
 RUN ["npm", "install"]
