@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
-import {authService} from '../services/auth'
+import {AuthContext} from '../contexts/AuthContext'
 
 class Login extends Component {
   state = {redirectToReferrer: false}
 
-  login = () => {
-    authService.authenticate(() => {
+  login = authenticate => {
+    authenticate(() => {
       this.setState({redirectToReferrer: true})
     })
   }
@@ -18,10 +18,19 @@ class Login extends Component {
     if (redirectToReferrer) return <Redirect to={from}/>
 
     return (
-      <div>
-        <p>You must log in to view the page at {from.pathname}</p>
-        <button onClick={this.login}>Log in</button>
-      </div>
+      <AuthContext.Consumer>
+        {
+          ({authenticate}) => {
+            return (
+              <div>
+                <p>You must log in to view the page at {from.pathname}</p>
+                <button onClick={this.login.bind(this, authenticate)}>Log in
+                </button>
+              </div>
+            )
+          }
+        }
+      </AuthContext.Consumer>
     )
   }
 }

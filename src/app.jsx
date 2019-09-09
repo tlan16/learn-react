@@ -14,6 +14,8 @@ import {LiftingStateUp} from './routes/MainConcepts/LiftingStateUp'
 import {Accessibility} from './routes/AdvancedGuides/Accessibility'
 import {PrivateRoute} from './routes/PrivateRoute'
 import {Login} from './routes/Login'
+import {authService} from './services/auth'
+import {AuthContext} from './contexts/AuthContext'
 
 const Private = () => (
   <React.Fragment>
@@ -22,34 +24,60 @@ const Private = () => (
 )
 
 class AppRouter extends Component {
+  constructor(props) {
+    super(props)
+
+    const authenticate = (cb) => {
+      const onAuthenticated = (authInfo) => {
+        this.setState(
+          () => {
+            cb(authInfo)
+            return {
+              authInfo,
+            }
+          }
+        )
+      }
+
+      authService.authenticate(onAuthenticated)
+    }
+
+    this.state = {
+      authInfo: undefined,
+      authenticate: authenticate,
+    }
+  }
+
   render() {
     return (
-      <Router>
-        <main className="App">
-          <Route path="/" exact component={Index}/>
-          <Route path="/hello_world/" component={HelloWorld}/>
-          <Route path="/introducing_jsx/"
-            component={IntroducingJsx}/>
-          <Route path="/rendering_elements/"
-            component={RenderingElements}/>
-          <Route path="/components_and_props/"
-            component={ComponentsAndProps}/>
-          <Route path="/state_and_lifecycle/"
-            component={StateAndLifecycle}/>
-          <Route path="/handling_events/"
-            component={HandlingEvents}/>
-          <Route path="/conditional_rendering/"
-            component={ConditionalRendering}/>
-          <Route path="/list_and_keys/" component={ListsAndKeys}/>
-          <Route path="/forms/" component={Forms}/>
-          <Route path="/lifting_state_up/"
-            component={LiftingStateUp}/>
-          <Route path="/accessibility/"
-            component={Accessibility}/>
-          <Route path="/login" component={Login} />
-          <PrivateRoute path="/protected/" component={Private}/>
-        </main>
-      </Router>
+      <AuthContext.Provider value={this.state}>
+        <Router>
+          <main className="App">
+            <Route path="/" exact component={Index}/>
+            <Route path="/hello_world/" component={HelloWorld}/>
+            <Route path="/introducing_jsx/"
+              component={IntroducingJsx}/>
+            <Route path="/rendering_elements/"
+              component={RenderingElements}/>
+            <Route path="/components_and_props/"
+              component={ComponentsAndProps}/>
+            <Route path="/state_and_lifecycle/"
+              component={StateAndLifecycle}/>
+            <Route path="/handling_events/"
+              component={HandlingEvents}/>
+            <Route path="/conditional_rendering/"
+              component={ConditionalRendering}/>
+            <Route path="/list_and_keys/" component={ListsAndKeys}/>
+            <Route path="/forms/" component={Forms}/>
+            <Route path="/lifting_state_up/"
+              component={LiftingStateUp}/>
+            <Route path="/accessibility/"
+              component={Accessibility}/>
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/protected/" component={Private}/>
+          </main>
+        </Router>
+      </AuthContext.Provider>
     )
   }
 }

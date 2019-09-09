@@ -1,4 +1,4 @@
-const fakeAuthData = {
+const fakeAuthInfo = {
   user : {
     firstName: 'Frank',
     lastName: 'Lan',
@@ -27,8 +27,8 @@ const AuthService = class {
 
   authenticate(cb) {
     this.#isAuthenticated = true
-    this.#authenticated = fakeAuthData,
-    setTimeout(cb, 100)
+    this.#authenticated = fakeAuthInfo
+    setTimeout(() => cb(fakeAuthInfo), 100)
   }
 
   signOut(cb) {
